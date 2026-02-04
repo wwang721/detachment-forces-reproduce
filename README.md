@@ -4,7 +4,7 @@
 
 This is the code required to reproduce the results in the paper:
 
-***Divergence of detachment forces in the finite-Voronoi model***, Wei Wang (汪巍) and Brian A. Camley, **Soft Matter (2026)**.
+- ***Divergence of detachment forces in the finite-Voronoi model***, Wei Wang (汪巍) and Brian A. Camley, **Soft Matter (2026)**.
 
 Preprint version available on **arXiv**: [arXiv:26xx.xxxxx](https://doi.org/10.48550/arXiv.26xx.xxxxx).
 
@@ -38,7 +38,9 @@ Figure 1 is the plotting example shown in the `pyafv` documentation; click the b
 
 ### Figure 2
 
+Run [time_step/main.py](/time_step/main.py) (modify the time step $\Delta t$ in line 60) to generate simulation snapshots saved in the [time_step/frames](/time_step/frames/) directory.
 
+> [WIP] Panels (b) and (c)...
 
 
 ### Figure 4
@@ -56,7 +58,7 @@ To generate the $P_0$—Λ phase digram for the steady-state $\ell_0$, run [trun
 
 ### Figure 6
 
-
+> [WIP] Note: remember to include plotting code for the deformable-polygon (DP) model...
 
 
 ### Other figures

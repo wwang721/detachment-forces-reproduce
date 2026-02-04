@@ -2,6 +2,7 @@ import numpy as np
 import pyafv as afv
 import matplotlib.pyplot as plt
 
+
 # Initialize simulator with two particles
 l = 1.0        # maximum cell radius
 KA = 1.0
@@ -73,7 +74,6 @@ ax.plot(data[-25::5, 0], data[-25::5, 1], 'o', color="C0", markerfacecolor='None
 data = np.column_stack((ds, forces_trunc))
 ax.plot(data[::step, 0], data[::step, 1], '^', color="C3", markerfacecolor="None", label='Truncated', zorder=0, clip_on=False)
 
-
 ax.axvline(x=2, color='C7', alpha=0.2, zorder=-1)
 ax.axhline(y=0, color='C7', alpha=0.2, zorder=-1)
 ax.set_ylim(-6, 6)
@@ -87,7 +87,6 @@ ax.set_ylabel(r'Force $f$')
 
 from mpl_toolkits.axes_grid1.inset_locator import inset_axes
 axins = inset_axes(ax, width="45%", height="35%", loc='lower left', bbox_to_anchor=(0.43, 0.08, 1, 1), bbox_transform=ax.transAxes)
-
 
 # change font size for inset
 axins.tick_params(axis='both', which='major', labelsize=11)
