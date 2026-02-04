@@ -43,12 +43,15 @@ Figure 1 is the plotting example shown in the `pyafv` documentation; click the b
 
 ### Figure 4
 
-
+To compare the theory with the simulation results shown in panel (a), run [truncation/comparison.py](/truncation/comparison.py). To compute the detachment forces in the finite-Voronoi model for a given value of $\delta$ ($=0.45$), run [truncation/detachment_forces.py](/truncation/detachment_forces.py).
 
 
 ### Figure 5
 
+To generate the $P_0$—Λ phase digram for the steady-state $\ell_0$, run [truncation/plot_l0.py](/truncation/plot_l0.py).
 
+> [!Note]
+> You may see `RuntimeWarning` reporting "overflow encountered". These are benign: during the optimization process, some random trial points may overflow, but this does not affect the final minimized results.
 
 
 ### Figure 6
