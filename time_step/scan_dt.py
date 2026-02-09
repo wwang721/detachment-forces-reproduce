@@ -26,8 +26,7 @@ counter = 0
 for dt in dts:
     if rank == 0:
         counter += 1
-        print(
-            f"\nRunning simulation for dt={dt}: {counter}/{len(dts)}")
+        print(f"\nRunning simulation for dt={dt}: {counter}/{len(dts)}")
     
     M = 480        # (# of local tasks * size) Total number of realizations
 
@@ -83,7 +82,6 @@ for dt in dts:
 
         theta = 2. * np.pi * np.random.rand(N) - np.pi
 
-        # sim = FiniteVoronoiSimulator2(pts, phys)
         sim = FiniteVoronoiSimulator(pts, phys)
 
         rupture_time = 0.0  # Store rupture time

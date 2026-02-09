@@ -65,6 +65,10 @@ To sweep the $P_0$—Λ parameter plane for detachment forces in DP model, submi
 > [!NOTE]
 > The `auto_calibrate` method used in [calibration/dp_detach.py](/calibration/dp_detach.py) also returns the steady-state cell radius $\ell_0$ and the target $\delta$ value that matches the detachment forces between the deformable-polygon (DP) and finite-Voronoi (FV) models; these quantities can also be saved and reused if needed.
 
+The directory [calibration/fix_delta](/calibration/fix_delta/) contains the scripts for the fixed-delta calibration with $\delta=0.45$. The scripts [force_dist_P0_4.8.py](/calibration/fix_delta/force_dist_P0_4.8.py) and [force_dist_P0_6.py](/calibration/fix_delta/force_dist_P0_6.py) generate the constitutive relations for $P_0=4.8$ and $P_0=6$, respectively [panels (c) and (d)].
+
+The directory [calibration/match_fdetach](/calibration/match_fdetach/) contains scripts for the calibration in which the detachment forces are matched between the FV and DP models. The scripts [force_dist_P0_4.8.py](/calibration/match_fdetach/force_dist_P0_4.8.py) and [force_dist_P0_6.py](/calibration/match_fdetach/force_dist_P0_6.py) generate the constitutive relations for $P_0=4.8$ and $P_0=6$, respectively [panels (g) and (h)].
+
 > [WIP] Other panels...
 
 
