@@ -19,7 +19,7 @@ The code was run with **Python 3.11.11** and the following packages:
 | numpy      | 2.1.3   | Numerical computations                                                       |
 | matplotlib | 3.10.0  | Plotting and visualization                                                   |
 | scipy      | 1.15.3  | Miscellaneous scientific functions                                           |
-| pyafv      | 0.4.5   | Core package; see our [GitHub repository](https://github.com/wwang721/pyafv) |
+| pyafv      | 0.4.6   | Core package; see our [GitHub repository](https://github.com/wwang721/pyafv) |
 | tqdm       | 4.67.1  | Progress bars during calculations                                            |
 | mpi4py     | 4.0.3   | Parallel processing using MPI                                                |
 | lifelines  | 0.30.0  | Survival analysis                                                            |
@@ -48,7 +48,9 @@ Submit the job to the HPC cluster using [time_step/run.slurm](/time_step/run.slu
 
 ### Figure 4
 
-To compare the theory with the simulation results shown in panel (a), run [truncation/comparison.py](/truncation/comparison.py). To compute the detachment forces in the finite-Voronoi model for a given value of $\delta$ ($=0.45$), run [truncation/detachment_forces.py](/truncation/detachment_forces.py).
+To compare the theory with the simulation results shown in panel (a), run [truncation/comparison.py](/truncation/comparison.py).
+
+> [WIP] To compute the detachment forces in the finite-Voronoi model for a given value of $\delta$ ($=0.45$), run [truncation/detachment_forces.py](/truncation/detachment_forces.py) or [truncation/detachment_forces_fix_ell.py](/truncation/detachment_forces_fix_ell.py) for a fixed $\ell$.
 
 
 ### Figure 5
