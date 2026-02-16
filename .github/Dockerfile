@@ -12,9 +12,7 @@ WORKDIR /tmp
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
         build-essential \
-        wget \
-        openssh-client \
-        git && \
+        wget && \
     \
     # --- Download and Compile OpenMPI ---
     wget -O openmpi.tar.gz $OMPI_URL && \
