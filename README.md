@@ -29,6 +29,8 @@ You can install all dependencies by running `pip install -r requirements.txt`.
 > [!TIP]
 > On some HPC clusters, global Python path can contaminate the runtime environment. You may need to clear it explicitly by prefixing the `pip` command with `PYTHONPATH=""` or by running `unset PYTHONPATH`.
 
+🐳 We also provide a containerized installation via **Docker** and **Singularity** (for HPC). See [CONTAINERS.md](/.github/CONTAINERS.md) for detailed instructions.
+
 
 ## Usage
 

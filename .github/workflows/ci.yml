@@ -56,6 +56,7 @@ jobs:
           cd ../../truncation
           uv run comparison.py
           uv run detachment_forces.py
+          uv run detachment_forces_fix_ell.py
 
           cd ../calibration
           uv run main.py
