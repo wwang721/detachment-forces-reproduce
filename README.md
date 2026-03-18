@@ -5,7 +5,7 @@
 
 These are the code and data required to reproduce the results in the paper:
 
-- ***Divergence of detachment forces in the finite-Voronoi model***, Wei Wang (汪巍) and Brian A. Camley, **Soft Matter (2026)**.
+- ***Divergence of detachment forces in the finite-Voronoi model***, Wei Wang (汪巍) and Brian A. Camley, submitted to **Soft Matter (2026)**.
 
 Preprint version available on **arXiv**: [arXiv:26xx.xxxxx](https://doi.org/10.48550/arXiv.26xx.xxxxx).
 
@@ -19,7 +19,7 @@ The code was run with **Python 3.11.11** and the following packages:
 | numpy      | 2.1.3   | Numerical computations                                                       |
 | matplotlib | 3.10.0  | Plotting and visualization                                                   |
 | scipy      | 1.15.3  | Miscellaneous scientific functions                                           |
-| pyafv      | 0.4.6   | Core package; see our [GitHub repository](https://github.com/wwang721/pyafv) |
+| pyafv      | >=0.4.6 | Core package; see our [GitHub repository](https://github.com/wwang721/pyafv) |
 | tqdm       | 4.67.1  | Progress bars during calculations                                            |
 | mpi4py     | 4.0.3   | Parallel processing using MPI                                                |
 | lifelines  | 0.30.0  | Survival analysis                                                            |
@@ -38,7 +38,7 @@ You can install all dependencies by running `pip install -r requirements.txt`.
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/pyafv/assets/blob/main/jupyter/custom_plot.ipynb)
 
-Figure 1 is the plotting example given by the `pyafv` documentation; click the badge above to run the notebook directly on **Google Colab**.
+Figure 1 is the plotting example given by the `pyafv` [documentation](https://pyafv.readthedocs.io/latest/examples.html#custom-plotting); click the badge above to run the notebook directly on **Google Colab**.
 
 
 ### Figure 2
@@ -50,9 +50,7 @@ Submit the job to the HPC cluster using [time_step/run.slurm](/time_step/run.slu
 
 ### Figure 4
 
-To compare the theory with the simulation results shown in panel (a), run [truncation/comparison.py](/truncation/comparison.py).
-
-> [WIP] To compute the detachment forces in the finite-Voronoi model for a given value of $\delta$ ($=0.45$), run [truncation/detachment_forces.py](/truncation/detachment_forces.py) or [truncation/detachment_forces_fix_ell.py](/truncation/detachment_forces_fix_ell.py) for a fixed $\ell$.
+To compare the theory with the simulation results shown in panel (a), run [truncation/comparison.py](/truncation/comparison.py). To compute the detachment forces in the finite-Voronoi model with fixed $\ell=1$ and $\delta=0.45$ [panel (b)], run [truncation/detachment_forces_fix_ell.py](/truncation/detachment_forces_fix_ell.py).
 
 
 ### Figure 5
@@ -64,18 +62,23 @@ To generate the $P_0$—Λ phase digram for the steady-state $\ell_0$, run [trun
 
 Run [calibration/main.py](/calibration/main.py) to execute the simulation and generate snapshots of a cell doublet subjected to external force dipoles in the deformable-polygon (DP) model.
 
-> [WIP] To plot the detachment forces along the path $\Lambda=\lambda^{(n)}+2K_P P_0$, run [calibration/vary_lambda_c.py](/calibration/vary_lambda_c.py).
-
 To sweep the $P_0$—Λ parameter plane for detachment forces in DP model, submit [calibration/run.slurm](/calibration/run.slurm), which executes [calibration/dp_detach.py](/calibration/dp_detach.py). The results are saved to [calibration/detachment_forces_DP.npy](/calibration/detachment_forces_DP.npy). Then run [calibration/plot.py](/calibration/plot.py) to generate panel (b).
 
 > [!NOTE]
 > The `auto_calibrate` method used in [calibration/dp_detach.py](/calibration/dp_detach.py) also returns the steady-state cell radius $\ell_0$ and the target $\delta$ value that matches the detachment forces between the deformable-polygon (DP) and finite-Voronoi (FV) models; these quantities can also be saved and reused if needed.
 
-The directory [calibration/fix_delta](/calibration/fix_delta/) contains the scripts for the fixed-delta calibration with $\delta=0.45$. The scripts [force_dist_P0_4.8.py](/calibration/fix_delta/force_dist_P0_4.8.py) and [force_dist_P0_6.py](/calibration/fix_delta/force_dist_P0_6.py) generate the constitutive relations for $P_0=4.8$ and $P_0=6$, respectively [panels (c) and (d)].
-The scripts used to generate the two phase diagrams [panels (e) and (f)] are located in the directory [calibration/fix_delta/phase_diagrams](/calibration/fix_delta/phase_diagrams/). Two separate jobs should be submitted using [run.slurm](/calibration/fix_delta/phase_diagrams/run.slurm) to execute [scan_P0_Lambda.py](/calibration/fix_delta/phase_diagrams/scan_P0_Lambda.py) and [scan_P0_v0.py](/calibration/fix_delta/phase_diagrams/scan_P0_v0.py), respectively. After the simulations complete, the phase diagrams can be generated by running [plot_P0_Lambda.py](/calibration/fix_delta/phase_diagrams/plot_P0_Lambda.py) and [plot_P0_v0.py](/calibration/fix_delta/phase_diagrams/plot_P0_v0.py), which read the output data saved in [data](/calibration/fix_delta/phase_diagrams/data/).
+To compute the detachment forces in the finite-Voronoi model with cell radius set to its optimal value $\ell=\ell_0$ and $\delta=0.45$ [panel (c)], run [truncation/detachment_forces.py](/truncation/detachment_forces.py).
 
-The directory [calibration/match_fdetach](/calibration/match_fdetach/) contains scripts for the calibration in which the detachment forces are matched between the FV and DP models. The scripts [force_dist_P0_4.8.py](/calibration/match_fdetach/force_dist_P0_4.8.py) and [force_dist_P0_6.py](/calibration/match_fdetach/force_dist_P0_6.py) generate the constitutive relations for $P_0=4.8$ and $P_0=6$, respectively [panels (g) and (h)].
-The scripts used to generate the last two phase diagrams [panels (i) and (j)] are located in [calibration/match_fdetach/phase_diagrams](/calibration/match_fdetach/phase_diagrams/) and are organized in the same way as those in [calibration/fix_delta/phase_diagrams](/calibration/fix_delta/phase_diagrams/).
+As shown in panel (d), to plot the detachment forces along the path $\Lambda=\lambda^{(n)}+2K_P P_0$ in the previous phase diagrams, run [calibration/vary_lambda_c.py](/calibration/vary_lambda_c.py).
+
+
+### Figure 7
+
+The directory [calibration/fix_delta](/calibration/fix_delta/) contains the scripts for the fixed-delta calibration with $\delta=0.45$. The scripts [force_dist_P0_4.8.py](/calibration/fix_delta/force_dist_P0_4.8.py) and [force_dist_P0_6.py](/calibration/fix_delta/force_dist_P0_6.py) generate the constitutive relations for $P_0=4.8$ and $P_0=6$, respectively [panels (a) and (b)].
+The scripts used to generate the two phase diagrams [panels (c) and (d)] are located in the directory [calibration/fix_delta/phase_diagrams](/calibration/fix_delta/phase_diagrams/). Two separate jobs should be submitted using [run.slurm](/calibration/fix_delta/phase_diagrams/run.slurm) to execute [scan_P0_Lambda.py](/calibration/fix_delta/phase_diagrams/scan_P0_Lambda.py) and [scan_P0_v0.py](/calibration/fix_delta/phase_diagrams/scan_P0_v0.py), respectively. After the simulations complete, the phase diagrams can be generated by running [plot_P0_Lambda.py](/calibration/fix_delta/phase_diagrams/plot_P0_Lambda.py) and [plot_P0_v0.py](/calibration/fix_delta/phase_diagrams/plot_P0_v0.py), which read the output data saved in [data](/calibration/fix_delta/phase_diagrams/data/).
+
+The directory [calibration/match_fdetach](/calibration/match_fdetach/) contains scripts for the calibration in which the detachment forces are matched between the FV and DP models. The scripts [force_dist_P0_4.8.py](/calibration/match_fdetach/force_dist_P0_4.8.py) and [force_dist_P0_6.py](/calibration/match_fdetach/force_dist_P0_6.py) generate the constitutive relations for $P_0=4.8$ and $P_0=6$, respectively [panels (e) and (f)].
+The scripts used to generate the last two phase diagrams [panels (g) and (h)] are located in [calibration/match_fdetach/phase_diagrams](/calibration/match_fdetach/phase_diagrams/) and are organized in the same way as those in [calibration/fix_delta/phase_diagrams](/calibration/fix_delta/phase_diagrams/).
 
 
 ### Other figures

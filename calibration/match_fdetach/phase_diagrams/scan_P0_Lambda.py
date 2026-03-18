@@ -47,7 +47,7 @@ for idx_Lambda, Lambda in enumerate(Lambdas):
         N_init = 100                    # number of cells
         radius = phys.r                 # radius of each cell [20 microns]
         phi = 0.5                       # packing fraction
-        dt = 0.01                       # time step
+        dt = 0.002 if Lambda <= 0.2 else 0.006      # time step
         T = 1000.0                      # total simulation time
         steps = int(T/dt)               # number of time steps
         T_init = 20.0                   # initial relaxation time

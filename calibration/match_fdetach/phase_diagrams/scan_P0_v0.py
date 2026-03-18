@@ -52,7 +52,7 @@ for idx_P0, P0_val in enumerate(P0s):
         N_init = 100                    # number of cells
         radius = phys.r                 # radius of each cell [20 microns]
         phi = 0.5                       # packing fraction
-        dt = 0.01                       # time step
+        dt = 0.003 if v0 >= 1.5 else 0.005        # time step
         T = 1000.0                      # total simulation time
         steps = int(T/dt)               # number of time steps
         T_init = 20.0                   # initial relaxation time
