@@ -39,7 +39,7 @@ singularity exec pyafv_latest.sif python <script_name>.py
 
 ### MPI-enabled container for HPC
 
-A special Docker image including **pyafv** 0.4.6, **OpenMPI**, and the Python package `mpi4py` is also available on [Docker Hub](https://hub.docker.com/layers/wwang721/pyafv/rockfish-mpi).
+A special Docker image including **pyafv** 0.4.8, **OpenMPI**, and the Python package `mpi4py` is also available on [Docker Hub](https://hub.docker.com/layers/wwang721/pyafv/rockfish-mpi).
 
 This image has been tested on the **Rockfish** cluster (rockfish.jhu.edu) at Johns Hopkins University. For other systems, you may use the [Dockerfile](./Dockerfile) as a reference and adapt it to your environment.
 

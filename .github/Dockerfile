@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1
 
-FROM wwang721/pyafv:0.4.6
+FROM wwang721/pyafv:0.4.8
 
 # 1. Set environment variables for OpenMPI
 ENV OMPI_VERSION=3.1.6

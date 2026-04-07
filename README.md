@@ -20,7 +20,7 @@ The code was run with **Python 3.11.11** and the following packages:
 | numpy      | 2.1.3   | Numerical computations                                                       |
 | matplotlib | 3.10.0  | Plotting and visualization                                                   |
 | scipy      | 1.15.3  | Miscellaneous scientific functions                                           |
-| pyafv      | >=0.4.6 | Core package; see our [GitHub repository](https://github.com/wwang721/pyafv) |
+| pyafv      | >=0.4.8 | Core package; see our [GitHub repository](https://github.com/wwang721/pyafv) |
 | tqdm       | 4.67.1  | Progress bars during calculations                                            |
 | mpi4py     | 4.0.3   | Parallel processing using MPI                                                |
 | lifelines  | 0.30.0  | Survival analysis                                                            |
@@ -89,4 +89,4 @@ The remaining figures are either purely theoretical or minor variants/extensions
 
 ## License
 
-This project is licensed under the [MIT License](/LICENSE), which permits use, modification, and distribution of the code with minimal restrictions.
+This project is licensed under the [BSD 3-Clause License](/LICENSE), which essentially means you have the freedom to use, modify, and distribute this code for almost any purpose, including commercial use, as long as you include the license, provide attribution, and do not use the contributors’ names to promote derived products without permission.
