@@ -15,15 +15,15 @@ Preprint version available on **arXiv**: [arXiv:2604.15481](https://doi.org/10.4
 
 The code was run with **Python 3.11.11** and the following packages:
 
-| Package    | Version | Usage                                                                        |
-| :--------- | :-----: | :--------------------------------------------------------------------------- |
-| numpy      | 2.1.3   | Numerical computations                                                       |
-| matplotlib | 3.10.0  | Plotting and visualization                                                   |
-| scipy      | 1.15.3  | Miscellaneous scientific functions                                           |
-| pyafv      | >=0.4.8 | Core package; see the [GitHub repository](https://github.com/wwang721/pyafv) |
-| tqdm       | 4.67.1  | Progress bars during calculations                                            |
-| mpi4py     | 4.0.3   | Parallel processing using MPI                                                |
-| lifelines  | 0.30.0  | Survival analysis                                                            |
+| Package    | Version  | Usage                                                                        |
+| :--------- | :------: | :--------------------------------------------------------------------------- |
+| numpy      | 2.1.3    | Numerical computations                                                       |
+| matplotlib | 3.10.0   | Plotting and visualization                                                   |
+| scipy      | 1.15.3   | Miscellaneous scientific functions                                           |
+| pyafv      | >=0.4.10 | Core package; see the [GitHub repository](https://github.com/wwang721/pyafv) |
+| tqdm       | 4.67.1   | Progress bars during calculations                                            |
+| mpi4py     | 4.0.3    | Parallel processing using MPI                                                |
+| lifelines  | 0.30.0   | Survival analysis                                                            |
 
 You can install all dependencies by running `pip install -r requirements.txt`.
 
@@ -44,7 +44,7 @@ Figure 1 is the plotting example given by the `pyafv` [documentation](https://py
 
 ### Figure 2
 
-Run [time_step/main.py](/time_step/main.py) (modify the time step $\Delta t$ in line 60) to generate simulation snapshots saved in the [time_step/frames](/time_step/frames/) directory.
+Run [time_step/main.py](/time_step/main.py) (modify the time step $\Delta t$ in line 7) to generate simulation snapshots saved in the [time_step/frames](/time_step/frames/) directory.
 
 Submit the job to the HPC cluster using [time_step/run.slurm](/time_step/run.slurm) to run [time_step/scan_dt.py](/time_step/scan_dt.py) with two values of $\delta$ ($0$ and $0.45$). The simulation outputs are saved in [time_step/data](/time_step/data). Panels (b) and (c) are then produced by executing [time_step/analysis/KMF_survival.py](/time_step/analysis/KMF_survival.py) and [time_step/analysis/median.py](/time_step/analysis/median.py).
 

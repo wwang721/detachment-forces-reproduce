@@ -1,7 +1,6 @@
 import numpy as np
-from pyafv import FiniteVoronoiSimulator, PhysicalParams, target_delta
+from pyafv import FiniteVoronoiSimulator, PhysicalParams, target_delta, select_daughter_cluster
 from tqdm import tqdm
-from connection import select_daughter_cluster
 from mpi4py import MPI
 
 

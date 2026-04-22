@@ -3,8 +3,7 @@ import argparse
 from tqdm import tqdm
 from mpi4py import MPI
 
-from pyafv import PhysicalParams, FiniteVoronoiSimulator
-from connection import select_daughter_cluster
+from pyafv import PhysicalParams, FiniteVoronoiSimulator, select_daughter_cluster
 
 
 parser = argparse.ArgumentParser()

@@ -4,59 +4,6 @@ import matplotlib.pyplot as plt
 from tqdm import tqdm
 
 
-def custom_plot_2d(pts: np.ndarray, diag: dict, r: float, lw=1., markersize=1., ax=None):
-    """
-    Custom plot function
-    """
-    if ax is None:
-        ax = plt.gca()
-
-    point_edges_type = diag["edges_type"]
-    point_vertices_f_idx = diag["regions"]
-    vertices_all = diag["vertices"]
-
-    # Draw cell centers
-    ax.plot(pts[:, 0], pts[:, 1], 'o', color='C1',
-            markersize=markersize, zorder=3)
-
-    N = len(pts)
-
-    # Draw each cell boundary
-    for idx in range(N):
-        edges_type = point_edges_type[idx]
-        vertices_f_idx = point_vertices_f_idx[idx]
-
-        x, y = pts[idx]
-        if len(edges_type) < 2:
-            angle = np.linspace(0, 2*np.pi, 100)
-            ax.plot(x + r * np.cos(angle), y + r *
-                    np.sin(angle), color="C4", lw=lw, zorder=1)
-            # ax.fill(x + r * np.cos(angle), y + r * np.sin(angle), color="C3", alpha=0.2, zorder=0)
-            continue
-
-        for idx_f, edge_type in enumerate(edges_type):
-            v1_idx = vertices_f_idx[idx_f]
-            x1, y1 = vertices_all[v1_idx]
-            idx2 = idx_f + 1 if idx_f < len(edges_type)-1 else 0
-            v2_idx = vertices_f_idx[idx2]
-            x2, y2 = vertices_all[v2_idx]
-
-            if edge_type == 1:
-                ax.plot([x1, x2], [y1, y2], color="C0", lw=lw, zorder=2)
-                # ax.fill([x1, x2, x], [y1, y2, y], 'C3', alpha=0.2, zorder=0)
-            else:
-                angle1 = np.arctan2(y1-y, x1-x)
-                angle2 = np.arctan2(y2-y, x2-x)
-                dangle = np.linspace(0, (angle1 - angle2) % (2*np.pi), 100)
-
-                ax.plot(x + r * np.cos(angle2+dangle), y + r *
-                        np.sin(angle2+dangle), color="C4", lw=lw, zorder=1)
-                # ax.fill(np.append(x + r * np.cos(angle2+dangle), x), np.append(y + r * np.sin(angle2+dangle), y), color="C3", alpha=0.2, lw=0, zorder=0)
-
-    ax.set_aspect("equal")
-    return ax
-
-
 dt = 0.01
 # dt = 0.005
 
@@ -101,7 +48,10 @@ for _ in tqdm(range(steps), desc="Active dynamics"):
     # Save frames
     if round(t, 5).is_integer():
         fig, ax = plt.subplots(figsize=(3, 3))
-        custom_plot_2d(pts, diag, r=1)
+        afv.visualize_2d(pts, diag, r=radius, ax=ax, cell_colors=None,
+                         show_points=True, point_size=1, point_colors='C1',
+                         arc_colors='C4', auto_adjust_bounds=False)
+
         ax.tick_params(axis='both', length=0, labelbottom=False, labelleft=False)
         ax.set_title(f't={t:.0f}', fontsize=10)
 
