@@ -210,3 +210,4 @@ __marimo__/
 .DS_Store
 **/frames/*.png
 **/phase_diagrams/data/*.npz
+**/ell_*/data/*.npz

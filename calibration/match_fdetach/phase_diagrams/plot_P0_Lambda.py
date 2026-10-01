@@ -84,7 +84,7 @@ row_min_indices = np.argmin(medians, axis=1)
 ax.set_ylabel(r'$\Lambda$')
 ax.set_xlabel(r'$P_0$')
 
-ax.set_title(r'$v_0=1.5$', pad=10)
+ax.set_title('Strategy 2', pad=10)
 
 ax.set_xticks([4.5, 5.5], minor=True)
 

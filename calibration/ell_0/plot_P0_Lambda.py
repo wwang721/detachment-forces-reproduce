@@ -6,19 +6,20 @@ from matplotlib.colors import LogNorm
 
 P0s = np.linspace(4, 6, 11)
 P0s = np.concatenate((P0s, [6.1, 6.2]))
-v0s = np.linspace(0.0, 2.0, 11)  # Tension parameter values
+Lambdas = np.linspace(0.0, 0.5, 11)  # Tension parameter values
 
 
 dt = 0.01  # time step
 medians = []
 for P0 in P0s:
     ms = []
-    for v0 in v0s:
+    for Lambda in Lambdas:
 
-        data = np.load("./data/P0_%g_v0_%g.npz" % (P0, v0))
+        data = np.load("./data/P0_%g_Lambda_%g.npz" % (P0, Lambda))
         
         rupture_times = data['rupture_times']
         rupture_sizes = data['rupture_sizes']
+
 
         # remove assays already rupture before starting time
         mask = (rupture_sizes > 0) & (rupture_times < dt)
@@ -30,6 +31,7 @@ for P0 in P0s:
         rupture_times = rupture_times[rupture_sizes > 0]
         rupture_sizes = rupture_sizes[rupture_sizes > 0]
         N = len(rupture_times)  # number of assays that have ruptures
+        # print(f"{N=}/{nExps=}")
 
         if nExps == 0:
             N, nExps = 1, 1  # to avoid no data
@@ -53,14 +55,16 @@ for P0 in P0s:
 
 medians = np.array(medians)
 
+# print(medians)
 
 # Mask infinite values
 masked_medians = np.ma.masked_invalid(medians)
 mask_zero = masked_medians < dt
 mask_inf = np.isinf(masked_medians)
+print(masked_medians)
 
 # Create meshgrid
-X, Y = np.meshgrid(P0s, v0s)
+X, Y = np.meshgrid(P0s, Lambdas)
 
 # Plot
 fig, ax = plt.subplots(figsize=(3, 2.8))
@@ -71,36 +75,22 @@ ax.scatter(X[ix, iy], Y[ix, iy], marker="x", color='C3', clip_on=False)
 iy, ix = np.where(mask_inf)
 ax.scatter(X[ix, iy], Y[ix, iy], marker="*", color='C4', clip_on=False)
 
-ax.axvline(x=np.pi*2, color='gray', linestyle='--', label=r'$P_0=2\pi$', zorder=2)
+# ax.axvline(x=np.pi*2, color='gray', linestyle='--', label=r'$P_0=2\pi$', zorder=2)
 
-background = ax.pcolormesh(X, Y, masked_medians.T, norm=LogNorm(), shading='auto', cmap='cool')
+background = ax.pcolormesh(X, Y, masked_medians.T, norm=LogNorm(), shading='auto', cmap='cool')  # 'YlGn_r')
 cbar = plt.colorbar(background, ax=ax)
 
 cbar.ax.set_title(r'$t_{1/2}$', pad=8)
 
-#---------------------------------------------------
-row_max_indices = np.argmax(masked_medians, axis=1)
+row_min_indices = np.argmin(medians, axis=1)
+# ax.plot(Ns, kthetas[row_min_indices], '--', color="gray", label='Minimum median')
 
-dv0 = v0s[1] - v0s[0]
-v0s_transition = v0s[row_max_indices] - (dv0/2.)
-
-# Fit a quadratic (degree=2) polynomial
-coeffs = np.polyfit(P0s, v0s_transition, deg=2)
-poly = np.poly1d(coeffs)
-
-x_fit = np.linspace(min(P0s), max(P0s), 300)
-y_fit = poly(x_fit)
-
-ax.plot(x_fit, y_fit, '--', lw=2, color=0.4*np.ones(3))
-#---------------------------------------------------
-
-ax.set_ylabel(r'$v_0$')
+ax.set_ylabel(r'$\Lambda$')
 ax.set_xlabel(r'$P_0$')
+ax.set_title(r'$\ell=1, \delta=0$')
 
 ax.set_xticks([4.5, 5.5], minor=True)
 
 ax.set_xlim(min(P0s), max(P0s))
-ax.set_ylim(min(v0s), max(v0s))
-ax.set_title('Strategy 1', pad=10)
-
-plt.savefig('P0_v0.png', dpi=150, bbox_inches='tight')
+ax.set_ylim(min(Lambdas), max(Lambdas))
+plt.savefig('P0_Lambda.png', dpi=150, bbox_inches='tight')

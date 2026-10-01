@@ -101,6 +101,6 @@ ax.set_xticks([4.5, 5.5], minor=True)
 
 ax.set_xlim(min(P0s), max(P0s))
 ax.set_ylim(min(v0s), max(v0s))
-ax.set_title(r'$\Lambda=0.2$')
+ax.set_title('Strategy 2', pad=10)
 
 plt.savefig('P0_v0.png', dpi=150, bbox_inches='tight')
