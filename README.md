@@ -7,7 +7,7 @@
 
 These are the code and data required to reproduce the results in the paper:
 
-- ***Divergence of detachment forces in the finite Voronoi model***, Wei Wang (汪巍) and Brian A. Camley, accepted by **Soft Matter (2026)**.
+- ***Divergence of detachment forces in the finite Voronoi model***, Wei Wang (汪巍) and Brian A. Camley, [Soft Matter (2026)](https://doi.org/10.1039/D6SM00409A).
 
 Preprint version available on **arXiv**: [arXiv:2604.15481](https://doi.org/10.48550/arXiv.2604.15481).
 
